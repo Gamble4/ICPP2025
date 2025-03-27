@@ -20,7 +20,7 @@ else
 fi
 
 outfile="$fname.out"
-$compiler $uniflags $specflags $1 -o $outfile
+$compiler $uniflags $specflags $1 -o $outfile -lm
 ./$outfile
 # not necessary, here just to keep things more organised in folder
 #rm $1

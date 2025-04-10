@@ -1,0 +1,4 @@
+#1 
+maybe a custom error class (derived from base exception) which include __FILE__ and 
+__LINE__ macros, similar to the one in mytools.hpp but in c++ style + derived
+

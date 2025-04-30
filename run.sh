@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # useful flags:  -Wall -Werror
-uniflags="-Wall -pedantic"
+uniflags="-Wall -Wextra -pedantic"
 
 #get filename without extension 
 if [ "${1:(-2)}" == ".c" ]

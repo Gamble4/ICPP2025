@@ -1,7 +1,9 @@
-#include <stdio.h>
+#include "1.hpp"
 
-int main()
+#include <iostream>
+
+void 
+h1::testfunc()
 {
-    printf("Hello, World\n");
-    return 0;
+    std::cout << "cpp hello \n";
 }

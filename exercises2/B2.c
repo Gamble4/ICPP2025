@@ -11,11 +11,16 @@ void print_arr(int* arr, int n)
     printf("\n");
 }
 
-int ind_in_array(int* a, int ind, int n)
+int check_ind_in_array(int* a, int ind, int n)
 {
     for (int i=0; i<n; i++)
     {
-        if (a[i] == ind) return 1;
+        if (a[i] == ind)
+        {            
+            printf("no duplicate indices allowed, exiting \n");
+            exit(-1); // maybe allow to change input with while loop?            
+            return 1;
+        }
     }
     return 0;
 }
@@ -41,30 +46,50 @@ int compare(void const *a, void const *b)
     return *(int*)a - *(int*)b;
 }
 
+int check_scanf_success(int scanf_out)
+{
+    if (!scanf_out) 
+    {
+        printf("parsing failed, please only enter integer numbers \n");
+        exit(-1);
+    }
+    return 1;
+}
+
+int check_is_pos(int in)
+{
+    if (in <= 0)
+    {
+        printf("please enter positive integers > 0\n");
+        exit(-1);
+    }
+    return 1;
+}
+
 
 int main()
 {
     const int max_num_terms = 10;
-    int num_terms, scanf_success, terms[max_num_terms], natural[max_num_terms];
+    int num_terms, terms[max_num_terms], diffs[max_num_terms];
     int scan_tmp;
     printf("How many terms to calculate? \n");
-    scanf_success = scanf("%d", &num_terms);
-    if (!scanf_success || num_terms > max_num_terms) // make this nicer
+    check_scanf_success(scanf("%d", &num_terms));
+    check_is_pos(num_terms);
+
+    if (num_terms > max_num_terms)
     {
+        printf("maximum number of terms is 10\n");
         exit(-1);
     }
 
     printf("please enter the desired indices: \n");
     for (int i=0; i<num_terms; i++)
     {
-        scanf("%d", &scan_tmp);
-        if (ind_in_array(terms, scan_tmp, i))
-        {
-            printf("no duplicate indices allowed, exiting \n");
-            exit(-1); // maybe allow to change input with while loop?
-        }
-        terms[i] = scan_tmp;   
-        natural[i] = scan_tmp;             
+        check_scanf_success(scanf("%d", &scan_tmp));
+        check_is_pos(scan_tmp);
+        check_ind_in_array(terms, scan_tmp, i);
+        
+        terms[i] = scan_tmp;
     }
 
     printf("--- Summary of Input ---\n");
@@ -77,20 +102,23 @@ int main()
     printf("\n");
 
     // take differences in order to compute the terms
-    qsort(natural, num_terms, sizeof(int), compare);
-    print_arr(natural, num_terms);
-    int diffs[max_num_terms];
-    diffs[0] = natural[0];
+    qsort(terms, num_terms, sizeof(int), compare);
+
+    printf("--- Output ---\n");
+    printf("natural order of indices: ");
+    print_arr(terms, num_terms);
+
+    diffs[0] = terms[0];
     for (int i=0; i<num_terms-1; i++)
     {
-        diffs[i+1] = natural[i+1] - natural[i];
-    }
-    print_arr(diffs, num_terms);
-    for (int i=0; i<num_terms; i++)
-    {
-        
-        natural[i] = lucas(diffs[i]);
+        diffs[i+1] = terms[i+1] - terms[i];
     }
 
-    print_arr(natural, num_terms);
+    for (int i=0; i<num_terms; i++)
+    {        
+        terms[i] = lucas(diffs[i]);
+    }
+
+    printf("terms order of lucas numbers: ");
+    print_arr(terms, num_terms);
 }

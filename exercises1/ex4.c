@@ -1,15 +1,35 @@
+
 #include <stdio.h>
 
-void print_mat(int rows, int cols, int** mat)
+         
+void
+arri_print(int* row, int len)
+{
+    for (int i=0; i<len; i++) {printf("%d ", row[i]);}
+    printf("\n");
+}
+
+void
+mati_print(int* first_row, int rows, int cols)
 {
     for (int i=0; i<rows; i++)
-    {
-        for (int j=0; j<cols; j++)
-        {
-            printf("%d", mat[i][j]);
-        }
-    }
+    {arri_print(first_row+(i*cols), cols);}
 }
+
+void 
+arrip_print(int** row, int len)
+{
+    for (int i=0; i<len; i++) {printf("%d ", *row[i]);}
+    printf("\n");
+}
+
+void
+matipp_print(int** first_row, int rows, int cols)
+{
+    for (int i=0; i<rows; i++)
+    {arrip_print((first_row+i*cols), cols);}
+}
+
 
 int main()
 {
@@ -22,15 +42,8 @@ int main()
     int* B[2][4];
 
     printf("before: \n");
-    for (int i=0; i<4; i++)
-    {
-        for (int j=0; j<2; j++)
-        {
-            printf("%d", A[i][j]);
-        }
-        printf("\n");
-    }
-
+    mati_print(*A, 4, 2);
+    
     printf("after: \n");
 
     // get pointers of rows
@@ -38,16 +51,9 @@ int main()
     {
         for (int j=0; j<4; j++)    
         {            
-            //printf("%p \n", (voA*) A[i]);
-            B[i][j] = &A[j][i];
-            printf("%d", *B[i][j]);
+            B[i][j] = &A[j][i];            
         }
-        printf("\n");
     }
     
-    //print_mat(4, 2, A);
-    printf("%p", A);
-    
-    
-    
+    matipp_print(*B, 2, 4);
 }

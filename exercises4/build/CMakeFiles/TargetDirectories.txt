@@ -1,4 +1,0 @@
-/home/benhoff/cpp_exp/ICPP2025/exercises4/build/CMakeFiles/D1lib.dir
-/home/benhoff/cpp_exp/ICPP2025/exercises4/build/CMakeFiles/D1.out.dir
-/home/benhoff/cpp_exp/ICPP2025/exercises4/build/CMakeFiles/edit_cache.dir
-/home/benhoff/cpp_exp/ICPP2025/exercises4/build/CMakeFiles/rebuild_cache.dir

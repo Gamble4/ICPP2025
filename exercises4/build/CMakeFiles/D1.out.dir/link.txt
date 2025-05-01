@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/D1.out.dir/D1main.cpp.o -o D1.out  libD1lib.a 

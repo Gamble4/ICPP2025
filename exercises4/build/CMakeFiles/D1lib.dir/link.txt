@@ -1,0 +1,2 @@
+/usr/bin/ar qc libD1lib.a CMakeFiles/D1lib.dir/src/D1.cpp.o
+/usr/bin/ranlib libD1lib.a

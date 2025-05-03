@@ -33,5 +33,6 @@ int main(void)
         std::cout << "\n";
         lbound = ++found_ubound;
     }
-    
+
+
 }

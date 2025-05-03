@@ -1,5 +1,6 @@
 */*.out
 */*.txt
+!exercises4/CMakeLists.txt
 */.cache
 */build
 */doc-doxygen

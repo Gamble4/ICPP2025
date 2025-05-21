@@ -7,8 +7,8 @@
 typedef class matrix
 {
 private:
-    unsigned int numRows; 
-    unsigned int numCols;
+    const unsigned int numRows; 
+    const unsigned int numCols;
     std::vector<std::vector<double>> m_data;
 public:
     matrix();

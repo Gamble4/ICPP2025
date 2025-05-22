@@ -12,27 +12,36 @@ class Particle
 
 public:
     Particle(std::string name, unsigned int amount, int charge, float spin) :
-    m_name(name), m_amount(amount), m_charge(charge), m_spin(spin)
+    m_name{name}, m_amount{amount}, m_charge{charge}, m_spin{spin}
     {};
 
+    std::string const& getName() const;
+    unsigned int const& getAmount() const;
+    int const& getCharge() const;
+    float const& getSpin() const;
+    
     void printInfo() const;
+
+    ~Particle(){};
 };
 
 class Nucleus
 {
-    //unsigned int m_A;
-    //unsigned int m_Z;
     Particle m_Neutrons;
     Particle m_Protons;
 
 public:
     Nucleus(unsigned int A, unsigned int Z):
-    m_Neutrons(Particle("Neutrons", A-Z,  0, 1)),
-    m_Protons(Particle("Protons", Z, 1, 1))    
+    m_Neutrons{Particle("Neutrons", A-Z,  0, 1)},
+    m_Protons {Particle("Protons", Z, 1, 1)}    
     {};
 
     Particle const& getNeutrons() const;
     Particle const& getProtons() const;
+
+    void printInfo() const;
+
+    ~Nucleus(){};
 };
 
 class Atom
@@ -51,10 +60,13 @@ public:
     m_Electrons(Particle("Electrons", Z,  -1, 1))
     {};
 
-    void printInfo();
     Particle const& getNeutrons() const;
     Particle const& getProtons() const;
     Particle const& getElectrons() const;
+    
+    void printInfo() const;
+
+    ~Atom(){};
 };
 
 #endif

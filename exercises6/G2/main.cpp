@@ -2,25 +2,49 @@
 #include <vector>
 #include <iostream>
 
+// in kg
+double AtomMass(Atom& atom)
+{
+    return (atom.getNeutrons().getAmount() + atom.getProtons().getAmount()) * 1e-26;
+}
+
 int main()
 {
-    Atom Fe{"Fe", 55, 26};
     
-    Particle pq{"quark", 1, 0, 1./2};
-    Nucleus nuc{55, 26};
-    
-    pq.printInfo();
-    nuc.printInfo();
+    Atom Protium{"Protium", 1, 1};
+    Atom Deuterium{"Deuterium", 2, 1};
+    Atom Tritium{"Tritium", 3, 1};
 
-    Atom Ag{"Ag", 26, 11};
-    Atom He{"He", 1, 1};
+    std::vector<Atom> vAtom{Protium, Deuterium, Tritium};
+    for (Atom& a : vAtom)    
+    {
+        a.printInfo();        
+    }
 
-    He.printInfo();
+    Protium.getElectrons().printInfo();
+    Protium.getNeutrons().printInfo();
+    Protium.getProtons().printInfo();
 
-    std::vector<Atom> vAtom{Fe, Ag, He};
-    const unsigned int t = 1;
-    const unsigned int& tr = t;
-    std::cout << (int) tr* -1 << "\n";
-    
+    Protium.getNucleus().getProtons().printInfo();
+    Protium.getNucleus().getNeutrons().printInfo();
 
+    Particle Electron{"Electron", 1, -1, 1./2};
+    Particle Proton{"Proton", 1, 1, 1./2};
+    Particle Neutron{"Neutron", 1, 0, 1./2};
+
+    Electron.printInfo();
+    Proton.printInfo();
+    Neutron.printInfo();
+
+    std::cout << "molecule test \n";
+    // try water molecule
+    Atom Hydrogen{"Hydrogen", 1, 1};
+    Atom Oxygen("Oxygen", 16, 8);
+
+    Molecule WaterMol{"WaterMol", std::vector<Atom>{Hydrogen, Hydrogen, Oxygen}};
+    for (Atom a : WaterMol)
+    {
+        a.printInfo();
+    }
+    std::cout <<  WaterMol.getCharge() << "\n";     
 }

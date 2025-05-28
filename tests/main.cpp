@@ -2,16 +2,25 @@
 
 class A {
    private:
+      int b = 6;
+
    public:
    int z, y, x;
-      A(int a, int b) : x{b}, z{x * x}, y(a) {}
+      
 };
 
-A obj(1, 2);
+
+class B : public A
+{
+   public:
+   A::
+};
+
+
 int main() {
 
-   A obj(1, 2);
+   
 
-   std::cout << obj.x << obj.z << obj.y;
+   
 
 }

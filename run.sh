@@ -13,7 +13,7 @@ elif [ "${1:(-4)}" == ".cpp" ]
 then
   fname="${1:0:(-4)}"
   compiler=clang++
-  specflags="-std=c++17"
+  specflags="-std=c++20"
 else
   echo "filetype not supported"
   exit "-1"

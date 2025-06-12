@@ -19,14 +19,14 @@ complex float root(float a, float b, float c, int sign)
         c_a = (complex float) a;
         c_b = (complex float) b;
         c_c = (complex float) c;
-        return (cpowf(c_b, 2) + sign * csqrtf(cpowf(b, 2) - 4*c_a * c_c)) / (2*c_a);
+        return (-c_b + sign * csqrtf(cpowf(b, 2) - 4*c_a * c_c)) / (2*c_a);
     }
     else if (disc == 0.)
     {
         printf("discriminant is 0 \n");
-        return powf(b, 2) / (2*a);
+        return -b / (2*a);
     }
-    return (powf(b, 2) + sign * sqrtf(powf(b, 2) - 4*a*c)) / (2*a);
+    return (-b + sign * sqrtf(powf(b, 2) - 4*a*c)) / (2*a);
 }
 
 int main()
@@ -38,5 +38,10 @@ int main()
     complex float nroot = root(1., 1., 9., -1);
     cprintf(nroot);
     printf("\n");
+
+    // test
+    //complex float test_proot = root(2., 4., 5., +1);
+    //cprintf(test_proot);
+    //printf("\n");
 }
 
